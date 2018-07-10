@@ -22,5 +22,8 @@ namespace WebApi.Models
 
         public System.Data.Entity.DbSet<WebApi.Models.Author> Authors { get; set; }
         public System.Data.Entity.DbSet<WebApi.Models.Book> Books { get; set; }
+        public System.Data.Entity.DbSet<WebApi.Models.Contact> Contacts { get; set; }
+        public System.Data.Entity.DbSet<WebApi.Models.Phone> Phones { get; set; }
+        public System.Data.Entity.DbSet<WebApi.Models.Email> Emails { get; set; }
     }
 }

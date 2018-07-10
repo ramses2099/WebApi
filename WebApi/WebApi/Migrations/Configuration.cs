@@ -10,11 +10,13 @@ namespace WebApi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(WebApi.Models.BookServiceContext context)
         {
+
+            
             context.Authors.AddOrUpdate(x => x.Id,
         new Author() { Id = 1, Name = "Jane Austen" },
         new Author() { Id = 2, Name = "Charles Dickens" },
@@ -59,6 +61,25 @@ namespace WebApi.Migrations
                     Genre = "Picaresque"
                 }
                 );
+            
+            //CONTACT
+            context.Contacts.AddOrUpdate(x => x.Id,
+                   new Contact() { Id = 1, FirstName = "Jane", LastName = "Austen" },
+                   new Contact() { Id = 2, FirstName = "Charles", LastName = "Dickens" },
+                   new Contact() { Id = 3, FirstName = "Miguel", LastName = "de Cervantes" }
+            );
+            //EMAIL
+            context.Emails.AddOrUpdate(x => x.Id,
+                new Email() { Id = 1, Contact_Email = "jane.austen@gmail.com", ContactId = 1 },
+                new Email() { Id = 2, Contact_Email = "charles.dickens@gmail.com", ContactId = 2 },
+                new Email() { Id = 3, Contact_Email = "miguel.decervantes@gmail.com", ContactId = 3 });
+            //
+            context.Phones.AddOrUpdate(x => x.Id,
+                new Phone() { Id = 1, Contact_Phone = "809-594-4556", ContactId = 1 },
+                new Phone() { Id = 2, Contact_Phone = "809-594-4561", ContactId = 2 },
+                new Phone() { Id = 3, Contact_Phone = "829-578-4562", ContactId = 3 });
+
+
         }
     }
 }
