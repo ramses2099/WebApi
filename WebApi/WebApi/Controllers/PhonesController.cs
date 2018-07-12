@@ -20,7 +20,7 @@ namespace WebApi.Controllers
         // GET: api/Phones
         public IQueryable<Phone> GetPhones()
         {
-            return db.Phones;
+            return db.Phones.Include(c => c.Contact);
         }
 
         // GET: api/Phones/5

@@ -31,6 +31,17 @@ namespace WebApi.Migrations
                 .ForeignKey("dbo.Authors", t => t.AuthorId, cascadeDelete: true)
                 .Index(t => t.AuthorId);
             
+            CreateTable(
+                "dbo.Persons",
+                c => new
+                {
+                    Id = c.Int(nullable: false, identity: true),
+                    FirstName = c.String(nullable: false),
+                    LastName = c.String(nullable: false),
+                    Phone = c.String(nullable: false),
+                    Email = c.String(nullable: false)
+                }).PrimaryKey(t => t.Id);
+
         }
         
         public override void Down()
@@ -39,6 +50,7 @@ namespace WebApi.Migrations
             DropIndex("dbo.Books", new[] { "AuthorId" });
             DropTable("dbo.Books");
             DropTable("dbo.Authors");
+            DropTable("dbo.Persons");
         }
     }
 }

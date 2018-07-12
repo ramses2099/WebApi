@@ -78,7 +78,10 @@ namespace WebApi.Migrations
                 new Phone() { Id = 1, Contact_Phone = "809-594-4556", ContactId = 1 },
                 new Phone() { Id = 2, Contact_Phone = "809-594-4561", ContactId = 2 },
                 new Phone() { Id = 3, Contact_Phone = "829-578-4562", ContactId = 3 });
-
+            //PERSON
+            context.Persons.AddOrUpdate(x => x.Id,
+                new Person() { FirstName = "Carlos", LastName = "Marte", Phone = "809-594-7896", Email = "cmarte@gmail.com" }
+                );
 
         }
     }

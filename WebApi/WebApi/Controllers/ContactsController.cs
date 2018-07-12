@@ -9,20 +9,36 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 using WebApi.Models;
 
 namespace WebApi.Controllers
+
 {
     public class ContactsController : ApiController
     {
         private BookServiceContext db = new BookServiceContext();
 
         // GET: api/Contacts
-        public IQueryable<Contact> GetContacts()
+        [HttpGet]
+        public IHttpActionResult GetContacts()
         {
-            return db.Contacts;
-        }
+            var entity = db.Contacts.
+                         Include(p => p.Phones)
+                         .Include(e => e.Emails)
+                         .Select(c => new
+                         {
+                             c.Id,
+                             c.FirstName,
+                             c.LastName,
+                             c.Phones,
+                             c.Emails
+                         });
 
+
+            return Json(entity);
+        }
+        
         // GET: api/Contacts/5
         [ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> GetContact(int id)

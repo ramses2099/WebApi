@@ -13,44 +13,44 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
-    public class EmailsController : ApiController
+    public class PeopleController : ApiController
     {
         private BookServiceContext db = new BookServiceContext();
 
-        // GET: api/Emails
-        public IQueryable<Email> GetEmails()
+        // GET: api/People
+        public IQueryable<Person> GetPersons()
         {
-            return db.Emails.Include(c => c.Contact);
+            return db.Persons;
         }
 
-        // GET: api/Emails/5
-        [ResponseType(typeof(Email))]
-        public async Task<IHttpActionResult> GetEmail(int id)
+        // GET: api/People/5
+        [ResponseType(typeof(Person))]
+        public async Task<IHttpActionResult> GetPerson(int id)
         {
-            Email email = await db.Emails.FindAsync(id);
-            if (email == null)
+            Person person = await db.Persons.FindAsync(id);
+            if (person == null)
             {
                 return NotFound();
             }
 
-            return Ok(email);
+            return Ok(person);
         }
 
-        // PUT: api/Emails/5
+        // PUT: api/People/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutEmail(int id, Email email)
+        public async Task<IHttpActionResult> PutPerson(int id, Person person)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != email.Id)
+            if (id != person.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(email).State = EntityState.Modified;
+            db.Entry(person).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace WebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EmailExists(id))
+                if (!PersonExists(id))
                 {
                     return NotFound();
                 }
@@ -71,35 +71,35 @@ namespace WebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Emails
-        [ResponseType(typeof(Email))]
-        public async Task<IHttpActionResult> PostEmail(Email email)
+        // POST: api/People
+        [ResponseType(typeof(Person))]
+        public async Task<IHttpActionResult> PostPerson(Person person)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Emails.Add(email);
+            db.Persons.Add(person);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = email.Id }, email);
+            return CreatedAtRoute("DefaultApi", new { id = person.Id }, person);
         }
 
-        // DELETE: api/Emails/5
-        [ResponseType(typeof(Email))]
-        public async Task<IHttpActionResult> DeleteEmail(int id)
+        // DELETE: api/People/5
+        [ResponseType(typeof(Person))]
+        public async Task<IHttpActionResult> DeletePerson(int id)
         {
-            Email email = await db.Emails.FindAsync(id);
-            if (email == null)
+            Person person = await db.Persons.FindAsync(id);
+            if (person == null)
             {
                 return NotFound();
             }
 
-            db.Emails.Remove(email);
+            db.Persons.Remove(person);
             await db.SaveChangesAsync();
 
-            return Ok(email);
+            return Ok(person);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,9 +111,9 @@ namespace WebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool EmailExists(int id)
+        private bool PersonExists(int id)
         {
-            return db.Emails.Count(e => e.Id == id) > 0;
+            return db.Persons.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -17,6 +17,8 @@ namespace WebApi.Models
     
         public BookServiceContext() : base("name=BookServiceContext")
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
@@ -25,5 +27,13 @@ namespace WebApi.Models
         public System.Data.Entity.DbSet<WebApi.Models.Contact> Contacts { get; set; }
         public System.Data.Entity.DbSet<WebApi.Models.Phone> Phones { get; set; }
         public System.Data.Entity.DbSet<WebApi.Models.Email> Emails { get; set; }
+        public System.Data.Entity.DbSet<WebApi.Models.Person> Persons { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+           
+        }
     }
+
 }
+
