@@ -73,6 +73,7 @@ namespace WebApi.Controllers
 
         // POST: api/People
         [ResponseType(typeof(Person))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostPerson(Person person)
         {
             if (!ModelState.IsValid)

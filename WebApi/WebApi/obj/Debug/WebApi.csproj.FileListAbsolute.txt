@@ -85,7 +85,6 @@ C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\bin\Microsoft.Owin.S
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\bin\System.Web.Http.Owin.xml
-C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\obj\Debug\WebApi.dll
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\obj\Debug\WebApi.pdb
 C:\Users\jose.encarnacion\Source\Repos\WebApi\WebApi\WebApi\obj\Debug\WebApi.Migrations.Initial.resources
